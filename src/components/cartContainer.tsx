@@ -2,16 +2,16 @@ import { clearCart } from "<component>/features/cart/cartSlice";
 import { openModal } from "<component>/features/modal/modalSlice";
 import { RootState } from "<component>/app/store";
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from '../app/hooks'
 import CartItem from "./CartItem";
 
 const CartContainer = () => {
-  const dispatch = useDispatch();
-  const { cartItems, total, amount } = useSelector(
+  const dispatch = useAppDispatch();
+  const { cartItems, total, amount } = useAppSelector(
     (store: RootState) => store.cart
   );
 
-  if (amount < 0) {
+  if (amount < 1) {
     return (
       <section className="flex justify-center items-center mt-4">
         <header>

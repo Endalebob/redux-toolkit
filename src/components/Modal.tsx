@@ -1,11 +1,12 @@
+import { useAppDispatch } from "<component>/app/hooks";
 import { clearCart } from "<component>/features/cart/cartSlice";
 import { closeModal } from "<component>/features/modal/modalSlice";
 import React from "react";
-import { useDispatch } from "react-redux";
+
 
 
 const Modal = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   return (
     <aside className="fixed flex justify-center items-center w-full h-full top-0 left-0 z-10 bg-black bg-opacity-75">
       <div className="flex flex-col justify-center items-center bg-slate-100 rounded-md p-8 gap-4 w-4/5 max-w-[400px] text-center">

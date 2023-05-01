@@ -1,6 +1,6 @@
 import React from "react";
 import { ChevronDown, ChevronUp } from "<component>/icons"; 
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from '../app/hooks'
 import { removeItem,increase,decrease} from "<component>/features/cart/cartSlice";
 
 
@@ -14,7 +14,7 @@ interface CartItemProps {
 }
 
 const CartItem = ({ id, img, title, price, amount }: CartItemProps) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   return (
     <article className="flex items-center justify-around gap-4 mb-4 w-full">
       <div className=" min-w-[260px] flex items-center justify-start gap-4 mb-4">

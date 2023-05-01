@@ -1,21 +1,20 @@
 import { Inter } from "next/font/google";
 import Navbar from "../components/Navbar";
 import CartContainer from "../components/cartContainer";
-import { useDispatch, useSelector, Provider } from "react-redux";
 import {
   calculateTotal,
   getCartItems,
 } from "<component>/features/cart/cartSlice";
-import { RootState, store, useAppDispatch } from "../app/store";
+import { RootState, store } from "../app/store";
 import { useEffect } from "react";
 import Modal from "<component>/components/Modal";
-import { time } from "console";
+import { useAppSelector,useAppDispatch } from "<component>/app/hooks";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const { cartItems, total, isLoading } = useSelector(
-    (store: RootState) => store.cart
+  const { cartItems, total, isLoading } = useAppSelector(
+    (store) => store.cart
   );
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -25,7 +24,7 @@ export default function Home() {
   useEffect(() => {
     dispatch(getCartItems());
   }, []);
-  const { isOpen } = useSelector((store: RootState) => store.modal);
+  const { isOpen } = useAppSelector((store) => store.modal);
   if (isLoading) {
     
     return (
