@@ -1,5 +1,6 @@
 import counterSlice from "<component>/features/counter/counterSlice";
-import { configureStore } from "@reduxjs/toolkit";
+import { apiSlice } from "<component>/features/success-story/success-story-api-slice";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import cartSlice from "../features/cart/cartSlice";
 import modalSlice from "../features/modal/modalSlice";
 
@@ -8,6 +9,10 @@ export const store = configureStore({
     cart: cartSlice,
     modal: modalSlice,
     counter: counterSlice,
+    [apiSlice.reducerPath]: apiSlice.reducer,
+  },
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware().concat(apiSlice.middleware);
   },
 });
 

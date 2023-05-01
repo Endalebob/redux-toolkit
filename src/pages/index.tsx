@@ -5,7 +5,6 @@ import {
   calculateTotal,
   getCartItems,
 } from "<component>/features/cart/cartSlice";
-import { RootState, store } from "../app/store";
 import { useEffect } from "react";
 import Modal from "<component>/components/Modal";
 import { useAppSelector,useAppDispatch } from "<component>/app/hooks";
@@ -26,9 +25,7 @@ export default function Home() {
   }, []);
   const { isOpen } = useAppSelector((store) => store.modal);
   if (isLoading) {
-    
     return (
-  
       <div className=" h-screen flex justify-center items-center">
         <div
           className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"

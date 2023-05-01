@@ -1,26 +1,41 @@
-import { CartIcon } from "../icons";
-import { RootState } from "<component>/app/store";
-import { useAppSelector } from "<component>/app/hooks";
-
-
-
-const Navbar = (): JSX.Element => {
-  const { amount } = useAppSelector((store: RootState) => store.cart);
+// components/Navbar.tsx
+import React from "react";
+import Link from "next/link";
+const Navbar = () => {
   return (
-    <>
-      <nav>
-        <div className="flex text-2xl font-semibold w-screen bg-blue-400 p-2 pr-10 items-around justify-between">
-          <h3>Redux Toolkit</h3>
-          <div>
-                <CartIcon />
-            
-            <div className="container">
-              <p className="total-amount">{amount}</p>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </>
+    <div className="flex justify-around p-4 bg-green-200 ">
+      <div className="flex">
+        <a className="btn btn-ghost normal-case text-xl">My Website</a>
+      </div>
+      <div className="flex-none">
+        <ul className="flex gap-4 px-1">
+          <li>
+            <Link
+              className=" border-2 border-zinc-700 hover:bg-green-500 hover:border-0 p-1 rounded-md"
+              href="/"
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              className=" border-2 border-zinc-700 hover:bg-green-500 hover:border-0 p-1 rounded-md"
+              href="/contact"
+            >
+              Contact
+            </Link>
+          </li>
+          <li>
+            <Link
+              className=" border-2 border-zinc-700 hover:bg-green-500 hover:border-0 p-1 rounded-md"
+              href="/about"
+            >
+              About
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </div>
   );
 };
 export default Navbar;
